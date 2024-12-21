@@ -1,7 +1,7 @@
 from django.urls import path
 from rest_framework_simplejwt.views import TokenRefreshView
 
-from Ecommerceapp import views
+from . import views
 from Ecommerceapp.views import ProductListCreateView, OrderListCreateView, PaymentListCreateView, \
     OrderRetrieveUpdateDestroyView, ProductRetrieveUpdateDestroyView, PaymentRetrieveUpdateDestroyView, register_user, \
     LoginView, LogoutView
@@ -18,4 +18,6 @@ urlpatterns = [
     path('api/token/', LoginView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/logout/', LogoutView.as_view(), name='logout_view'),
+    path("checkout/", views.checkout, name="payment_form"),
+    path("success/", views.success, name="success"),
 ]
